@@ -1,0 +1,42 @@
+version: "3.8"
+services:
+    lb:
+        image: nginx
+        build:
+            context: ./nginx
+        ports:
+            - "80:80"
+        command: [nginx-debug, "-g", "daemon off;"]
+        volumes:
+            - ./nginx/default.conf:/etc/nginx/nginx.conf:ro
+        depends_on:
+            - app1
+            - app2
+            - app3
+    app1:
+        build:
+            context: ./app
+        image: app
+        ports:
+            - "1000:1000"
+        environment:
+            - PORT=1000
+            - SERVER_ID=1
+    app2:
+        build:
+            context: ./app
+        image: app
+        ports:
+            - "2000:2000"
+        environment:
+            - PORT=2000
+            - SERVER_ID=1
+    app3:
+        build:
+            context: ./app
+        image: app
+        ports:
+            - "3000:3000"
+        environment:
+            - PORT=3000
+            - SERVER_ID=1
