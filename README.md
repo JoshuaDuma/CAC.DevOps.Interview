@@ -1,3 +1,7 @@
+# Run
+
+Run `cd aws_terraform` and run `terraform apply` to create the EC2 instance. Requires AWS CLI, AWS Access Keys, AWS security groups with ports 22, 80 and 443 enabled.
+
 # Candidate Task
 
 Write a Terraform script to deploy the provided sample React application to AWS <sup>*</sup>.  The application must be publicly accessible via http on port 80 using an IP address or a domain name specified at deployment time.
