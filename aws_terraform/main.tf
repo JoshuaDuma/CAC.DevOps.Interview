@@ -31,6 +31,9 @@ resource "aws_instance" "app_server" {
     sudo usermod -a -G docker ec2-user
     sudo curl -L https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
+    git clone https://github.com/JoshuaDuma/CAC.DevOps.Interview.git
+    cd load_balanced_nodejs_app/app
+    docker build -t app .
   EOF
 
   key_name                = "hello-world-key"
