@@ -53,6 +53,7 @@ resource "aws_instance" "app_server" {
     sudo service docker start
     sudo curl -L https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
+    cd ~/
     git clone https://github.com/JoshuaDuma/CAC.DevOps.Interview.git
     cd CAC.DevOps.Interview/docker_nodejs
     sudo docker-compose up --build
