@@ -16,13 +16,15 @@ provider "aws" {
 
 resource "aws_instance" "app_server" {
   ami           = "ami-830c94e3"
-  instance_type = "t2.micro"
+  instance_type = "t2.medium"
+
+  monitoring = true
 
   tags = {
     Name = "CAC_DevOps_Interview"
   }
 
-  user_data = <<-EOF
+  user_data = <<-EOL
     #!/bin/bash
     set -ex
     sudo yum update -y
@@ -34,10 +36,5 @@ resource "aws_instance" "app_server" {
     git clone https://github.com/JoshuaDuma/CAC.DevOps.Interview.git
     cd load_balanced_nodejs_app/app
     docker build -t app .
-  EOF
-
-  key_name                = "hello-world-key"
-  monitoring              = true
-  disable_api_termination = false
-  ebs_optimized           = true
+  EOL
 }

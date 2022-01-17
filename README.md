@@ -1,5 +1,3 @@
-# Demo
-
 # Candidate Task
 
 Write a Terraform script to deploy the provided sample React application to AWS <sup>*</sup>.  The application must be publicly accessible via http on port 80 using an IP address or a domain name specified at deployment time.
