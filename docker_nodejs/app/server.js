@@ -9,7 +9,11 @@ const SERVER_ID = process.env.SERVER_ID;
 app.use(express.static(path.join(__dirname, 'website/build')));
 
 app.get('/*', function (req, res) {
-  res.send('Hello World!');
+  res.sendFile(path.join(__dirname, 'build', 'index.html'), function(err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
 });
 
 app.listen(PORT, function () {
